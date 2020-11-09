@@ -8,6 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * The default TimeTeller implementation formats the time using the following format: 'YYYY-MM-DD HH:MM:SS'
+ */
 public class TimeTellerImpl implements TimeTeller {
     @NotNull
     private final DateTimeFormatter dateFormatter;
@@ -15,10 +18,17 @@ public class TimeTellerImpl implements TimeTeller {
     @NotNull
     private final Clock clock;
 
+    /**
+     * The default constructor which uses the current system time.
+     */
     public TimeTellerImpl() {
         this(Clock.systemDefaultZone());
     }
 
+    /**
+     * A constructor which can take a custom clock as a time source. Used for testing.
+     * @param clock The time source used to return a formatted time string.
+     */
     public TimeTellerImpl(@NotNull Clock clock) {
         dateFormatter = new DateTimeFormatterBuilder()
                 .append(DateTimeFormatter.ISO_LOCAL_DATE)
