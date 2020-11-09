@@ -20,7 +20,7 @@ public class TimeTellerImpl implements TimeTeller {
 
     @Override
     public @NotNull String getFormattedTime() {
-        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime currentTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS); // limit the precision to seconds, more detailed time is not very user-readable
         return currentTime.format(dateFormatter);
     }
 }
