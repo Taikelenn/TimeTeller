@@ -1,28 +1,36 @@
 package ee.kasumata.timeteller.actions;
 
+import com.intellij.notification.*;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.ui.Messages;
 import ee.kasumata.timeteller.time.TimeTeller;
 import ee.kasumata.timeteller.time.TimeTellerImpl;
 import org.jetbrains.annotations.NotNull;
-
-import java.time.LocalDateTime;
 
 public class TellTimeAction extends AnAction {
     @NotNull
     private final TimeTeller timeTeller;
 
+    @NotNull
+    private final NotificationGroup notificationGroup;
+
     public TellTimeAction() {
         this(new TimeTellerImpl());
     }
 
-    public TellTimeAction(TimeTeller timeTeller) {
+    public TellTimeAction(@NotNull TimeTeller timeTeller) {
         this.timeTeller = timeTeller;
+        this.notificationGroup = new NotificationGroup("Time Teller", NotificationDisplayType.BALLOON);
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        Messages.showMessageDialog(timeTeller.getFormattedTime(), "Sample Title", null);
+        Notification notification = notificationGroup.createNotification(
+                "Current time",
+                null,
+                "Current local time: " + timeTeller.getFormattedTime(),
+                NotificationType.INFORMATION
+        );
+        Notifications.Bus.notify(notification);
     }
 }
