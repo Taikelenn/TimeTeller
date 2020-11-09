@@ -1,11 +1,10 @@
 <idea-plugin>
     <id>ee.kasumata.TimeTeller</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>Time Teller</name>
+    <vendor email="taikelenn@kasumata.ee" url="https://kasumata.ee/" />
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    This plugin fetches the user's system local time and displays it as a notification.
     ]]></description>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -17,6 +16,9 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
+        <action class="ee.kasumata.timeteller.actions.TellTimeAction" id="ee.kasumata.timeteller.actions.TellTimeAction"
+                text="Tell the Time" description="Notifies the user of the current system time.">
+            <add-to-group group-id="HelpMenu" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>
