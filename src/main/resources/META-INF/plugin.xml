@@ -19,6 +19,7 @@
         <action class="ee.kasumata.timeteller.actions.TellTimeAction" id="ee.kasumata.timeteller.actions.TellTimeAction"
                 text="Tell the Time" description="Notifies the user of the current system time.">
             <add-to-group group-id="HelpMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="ctrl shift t" keymap="$default"/>
         </action>
     </actions>
 </idea-plugin>
