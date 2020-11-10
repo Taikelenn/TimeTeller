@@ -1,12 +1,12 @@
 package ee.kasumata.timeteller.actions;
 
 import com.intellij.notification.*;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.project.DumbAwareAction;
 import ee.kasumata.timeteller.time.TimeTeller;
 import org.jetbrains.annotations.NotNull;
 
-public class TellTimeAction extends AnAction {
+public class TellTimeAction extends DumbAwareAction {
     @NotNull
     private final TimeTeller timeTeller;
 
