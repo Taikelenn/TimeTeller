@@ -4,7 +4,6 @@ import com.intellij.notification.*;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import ee.kasumata.timeteller.time.TimeTeller;
-import ee.kasumata.timeteller.time.TimeTellerImpl;
 import org.jetbrains.annotations.NotNull;
 
 public class TellTimeAction extends AnAction {
@@ -15,7 +14,7 @@ public class TellTimeAction extends AnAction {
     private final NotificationGroup notificationGroup;
 
     public TellTimeAction() {
-        this(new TimeTellerImpl());
+        this(new TimeTeller());
     }
 
     public TellTimeAction(@NotNull TimeTeller timeTeller) {
